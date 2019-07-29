@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EsibayeniSolution.Models.LivestockImagesVM>
+
+@{
+    ViewBag.Title = "ViewLivestockImage";
+}
+
+<h2>ViewLivestockImage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LivestockCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="@Url.Action("Download","LivestockImages",new { id=item.ImageId})">@Html.DisplayFor(modelItem => item.ImageId)</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LivestockCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ImageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ImageId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ImageId })
+        </td>
+    </tr>
+}
+
+</table>
