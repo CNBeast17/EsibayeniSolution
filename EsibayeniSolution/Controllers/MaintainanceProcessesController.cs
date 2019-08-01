@@ -17,8 +17,7 @@ namespace EsibayeniSolution.Controllers
         // GET: MaintainanceProcesses
         public ActionResult Index()
         {
-            var maintainanceProcesses = db.MaintainanceProcesses.Include(m => m.LivesStock);
-            return View(maintainanceProcesses.ToList());
+            return View(db.MaintainanceProcesses.ToList());
         }
 
         // GET: MaintainanceProcesses/Details/5
@@ -39,7 +38,6 @@ namespace EsibayeniSolution.Controllers
         // GET: MaintainanceProcesses/Create
         public ActionResult Create()
         {
-            ViewBag.LivestockID = new SelectList(db.LivesStocks, "LivestockID", "Code");
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace EsibayeniSolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MProcID,LivestockID,date,time")] MaintainanceProcess maintainanceProcess)
+        public ActionResult Create([Bind(Include = "MainPId,MainName")] MaintainanceProcess maintainanceProcess)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +55,6 @@ namespace EsibayeniSolution.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.LivestockID = new SelectList(db.LivesStocks, "LivestockID", "Code", maintainanceProcess.LivestockID);
             return View(maintainanceProcess);
         }
 
@@ -73,7 +70,6 @@ namespace EsibayeniSolution.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.LivestockID = new SelectList(db.LivesStocks, "LivestockID", "Code", maintainanceProcess.LivestockID);
             return View(maintainanceProcess);
         }
 
@@ -82,7 +78,7 @@ namespace EsibayeniSolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MProcID,LivestockID,date,time")] MaintainanceProcess maintainanceProcess)
+        public ActionResult Edit([Bind(Include = "MainPId,MainName")] MaintainanceProcess maintainanceProcess)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +86,6 @@ namespace EsibayeniSolution.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.LivestockID = new SelectList(db.LivesStocks, "LivestockID", "Code", maintainanceProcess.LivestockID);
             return View(maintainanceProcess);
         }
 

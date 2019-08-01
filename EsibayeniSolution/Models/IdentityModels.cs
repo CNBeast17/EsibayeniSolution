@@ -46,6 +46,8 @@ namespace EsibayeniSolution.Models
         public System.Data.Entity.DbSet<EsibayeniSolution.Models.MaintainanceStock> MaintainanceStocks { get; set; }
 
         public System.Data.Entity.DbSet<EsibayeniSolution.Models.ProductCategory> ProductCategories { get; set; }
+        public System.Data.Entity.DbSet<EsibayeniSolution.Models.Maintainance> Maintainances { get; set; }
+        public System.Data.Entity.DbSet<EsibayeniSolution.Models.LivestockMaintainanceStock> LivestockMaintainanceStocks { get; set; }
 
         // public System.Data.Entity.DbSet<EsibayeniSolution.Models.LivestockImagesVM> LivestockImagesVMs { get; set; }
     }

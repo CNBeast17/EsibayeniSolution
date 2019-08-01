@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using EsibayeniSolution.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace EsibayeniSolution
 {
@@ -63,6 +64,42 @@ namespace EsibayeniSolution
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+        }
+        public void CreateRole()
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            IdentityRole role;
+            if (!roleManager.RoleExists("Admin"))
+            {
+                role = new IdentityRole();
+                role.Name = "Admin";
+                roleManager.Create(role);
+            }
+
+            if (!roleManager.RoleExists("Customer"))
+            {
+                role = new IdentityRole();
+                role.Name = "Customer";
+                roleManager.Create(role);
+            }
+
+        }
+        public void CreateUser()
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var user = new ApplicationUser();
+
+            user.UserName = "Admin@Mageba.com";
+            user.Email = "Admin@Mageba.com";
+            user.EmailConfirmed = true;
+            var check = userManager.Create(user, "Password@12");
+
+            if (check.Succeeded)
+            {
+                userManager.AddToRole(user.Id, "Admin");
+
+            }
+
         }
     }
 }

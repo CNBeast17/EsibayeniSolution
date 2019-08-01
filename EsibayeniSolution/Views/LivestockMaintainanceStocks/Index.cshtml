@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EsibayeniSolution.Models.LivestockMaintainanceStock>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaintainaceStock.ProductName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaintainaceStock.ProductName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LivestockMaintainanceStockID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LivestockMaintainanceStockID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LivestockMaintainanceStockID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -170,20 +170,26 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BatchesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivesStocksController.cs" />
     <Compile Include="Controllers\LivestockImagesController.cs" />
+    <Compile Include="Controllers\LivestockMaintainanceStocksController.cs" />
     <Compile Include="Controllers\MaintainanceProcessesController.cs" />
+    <Compile Include="Controllers\MaintainancesController.cs" />
     <Compile Include="Controllers\MaintainanceStocksController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductCategoriesController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
+    <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewMdel.cs" />
     <Compile Include="Models\Batch.cs" />
     <Compile Include="Models\BatchCategory.cs" />
     <Compile Include="Models\Category.cs" />
@@ -191,6 +197,8 @@
     <Compile Include="Models\LivesStock.cs" />
     <Compile Include="Models\LivestockImage.cs" />
     <Compile Include="Models\LivestockImagesVM.cs" />
+    <Compile Include="Models\LivestockMaintainanceStock.cs" />
+    <Compile Include="Models\Maintainance.cs" />
     <Compile Include="Models\MaintainanceProcess.cs" />
     <Compile Include="Models\MaintainanceStock.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -296,6 +304,21 @@
     <Content Include="Views\ProductCategories\Details.cshtml" />
     <Content Include="Views\ProductCategories\Edit.cshtml" />
     <Content Include="Views\ProductCategories\Index.cshtml" />
+    <Content Include="Views\LivestockMaintainanceStocks\Create.cshtml" />
+    <Content Include="Views\LivestockMaintainanceStocks\Delete.cshtml" />
+    <Content Include="Views\LivestockMaintainanceStocks\Details.cshtml" />
+    <Content Include="Views\LivestockMaintainanceStocks\Edit.cshtml" />
+    <Content Include="Views\LivestockMaintainanceStocks\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\CreateUser.cshtml" />
+    <Content Include="Views\Admin\CreateRole.cshtml" />
+    <Content Include="Views\Admin\AssignRole.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\Maintainances\Create.cshtml" />
+    <Content Include="Views\Maintainances\Delete.cshtml" />
+    <Content Include="Views\Maintainances\Details.cshtml" />
+    <Content Include="Views\Maintainances\Edit.cshtml" />
+    <Content Include="Views\Maintainances\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

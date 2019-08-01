@@ -48,10 +48,11 @@ namespace EsibayeniSolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ProductName,PCatID,ProductType,dateOfEntry,Expirydate,StockPrice")] MaintainanceStock maintainanceStock)
+        public ActionResult Create([Bind(Include = "ProductID,ProductName,PCatID,Expirydate,StockPrice")] MaintainanceStock maintainanceStock)
         {
             if (ModelState.IsValid)
             {
+                maintainanceStock.dateOfEntry = maintainanceStock.EntryDate();
                 db.MaintainanceStocks.Add(maintainanceStock);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,7 +83,7 @@ namespace EsibayeniSolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,ProductName,PCatID,ProductType,dateOfEntry,Expirydate,StockPrice")] MaintainanceStock maintainanceStock)
+        public ActionResult Edit([Bind(Include = "ProductID,ProductName,PCatID,dateOfEntry,Expirydate,StockPrice")] MaintainanceStock maintainanceStock)
         {
             if (ModelState.IsValid)
             {
