@@ -18,19 +18,22 @@
             @Html.DisplayNameFor(model => model.MaintainanceProcess.MainName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductCategory.ProductType)
+            @Html.DisplayNameFor(model => model.MaitainanceStock.ProductName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductName)
+            @Html.DisplayNameFor(model => model.User)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.ProductCategory)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Time)
+            @Html.DisplayNameFor(model => model.AttendanceDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PreiviousWeight)
+            @Html.DisplayNameFor(model => model.PreviousDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreviousWeight)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CurrentWeight)
@@ -47,19 +50,22 @@
             @Html.DisplayFor(modelItem => item.MaintainanceProcess.MainName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductCategory.ProductType)
+            @Html.DisplayFor(modelItem => item.MaitainanceStock.ProductName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
+            @Html.DisplayFor(modelItem => item.User)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Date)
+            @Html.DisplayFor(modelItem => item.ProductCategory)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Time)
+            @Html.DisplayFor(modelItem => item.AttendanceDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PreiviousWeight)
+            @Html.DisplayFor(modelItem => item.PreviousDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousWeight)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CurrentWeight)

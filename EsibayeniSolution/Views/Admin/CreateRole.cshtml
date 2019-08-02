@@ -1,30 +1,22 @@
-﻿
-@*@{
-    ViewBag.Title = "CreateRole";
-}
-
-<h2>CreateRole</h2>*@
-
-
-@{
-    ViewBag.Title = "CreateRole";
+﻿@{
+    ViewBag.Title = "Add Role";
 }
 
 <h2>CreateRole</h2>
 @using (Html.BeginForm("NewRole", "Admin", FormMethod.Post))
 {
-    <div class=" row">
+    <div class="row">
         <div class="col-md-10">
             <label class="control-label">Role Name</label>
             <input type="text" class="form-control" name="RoleName" />
         </div>
         <div class="col-md-10">
-            <button class="btn btn-primary" type="submit">Save</button>
+            <button class="btn btn-primary" type="submit">Add</button>
         </div>
     </div>
     <br />
     <div style="text-decoration:none" class="btn btn-success btn-sm">
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back", "Index")
     </div>
 
 }

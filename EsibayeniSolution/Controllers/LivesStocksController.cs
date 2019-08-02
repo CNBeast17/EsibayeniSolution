@@ -37,6 +37,7 @@ namespace EsibayeniSolution.Controllers
         }
 
         // GET: LivesStocks/Create
+        [Authorize(Roles = "Livestock Controller")]
         public ActionResult AutoCreate(Batch batch)
         {
             //loop this create process as many times as there are livestock in the batch
@@ -55,6 +56,7 @@ namespace EsibayeniSolution.Controllers
            
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Livestock Controller")]
         public ActionResult Create()
         {
             Batch batch = new Batch();
@@ -100,7 +102,7 @@ namespace EsibayeniSolution.Controllers
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryType", livesStock.CategoryId);
             return View(livesStock);
         }
-
+        [Authorize(Roles = "Livestock Controller")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -137,6 +139,7 @@ namespace EsibayeniSolution.Controllers
         }
 
         // GET: LivesStocks/Delete/5
+        [Authorize(Roles = "Livestock Controller")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

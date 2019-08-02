@@ -10,6 +10,7 @@ using EsibayeniSolution.Models;
 
 namespace EsibayeniSolution.Controllers
 {
+    [Authorize(Roles = "Stock Controller")]
     public class BatchesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

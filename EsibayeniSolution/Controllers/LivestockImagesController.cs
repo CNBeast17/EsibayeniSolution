@@ -43,6 +43,7 @@ namespace EsibayeniSolution.Controllers
         }
 
         // GET: LivestockImages/Create
+        [Authorize(Roles = "Livestock Controller")]
         public ActionResult Create(LivesStock livestock)
         {
             LivestockImage livestockImage = new LivestockImage();

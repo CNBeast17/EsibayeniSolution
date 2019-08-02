@@ -18,19 +18,18 @@ namespace EsibayeniSolution.Models
         public int LivestockID { get; set; }
         public virtual LivesStock LivesStock { get; set; }
         [DisplayName("Product Name")]
-        public string ProductName { get; set; }
-        public int PCatID { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
+        public int ProductId { get; set; } 
+        public virtual MaintainanceStock MaitainanceStock { get; set; }
+        [DisplayName("Product Category")]
+        public string ProductCategory { get; set; }
         public int MainPId { get; set; }
         public virtual MaintainanceProcess MaintainanceProcess { get; set; }
-        [DataType(DataType.Date)]
         [DisplayName("Date of attendance")]
-        public DateTime Date { get; set; }
+        public DateTime AttendanceDate { get; set; }
         [DisplayName("Previous date attended in")]
-        [DataType(DataType.Date)]
-        public DateTime Time { get; set; }
+        public DateTime PreviousDate { get; set; }
         [DisplayName("Previous weight")]
-        public decimal PreiviousWeight { get; set; }
+        public decimal PreviousWeight { get; set; }
         [DisplayName("Current weight")]
         public decimal CurrentWeight { get; set; }
 
@@ -40,6 +39,7 @@ namespace EsibayeniSolution.Models
         {
             return DateTime.Now;
         }
+
 
     }
 }

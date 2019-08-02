@@ -1,24 +1,16 @@
-﻿
-@*@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>*@
-
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Admin";
 }
 
 <h2>Index</h2>
 
 <div style="text-decoration:none" class="btn btn-warning btn-sm">
-    @Html.ActionLink("Create User", "CreateUser", "Admin")
+    @Html.ActionLink("Add User", "CreateUser", "Admin")
 </div>
 <div style="text-decoration:none" class="btn btn-warning btn-sm">
-    @Html.ActionLink("Create Role", "CreateRole", "Admin")
+    @Html.ActionLink("Add Role", "CreateRole", "Admin")
 </div>
 <div style="text-decoration:none" class="btn btn-warning btn-sm">
-    @Html.ActionLink("Assign Role", "AssignRole", "Admin")
+    @Html.ActionLink("Assign User Role", "AssignRole", "Admin")
 </div>
 

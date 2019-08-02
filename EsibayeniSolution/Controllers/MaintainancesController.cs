@@ -18,7 +18,7 @@ namespace EsibayeniSolution.Controllers
         // GET: Maintainances
         public ActionResult Index()
         {
-            var maintainances = db.Maintainances.Include(m => m.LivesStock).Include(m => m.MaintainanceProcess).Include(m => m.ProductCategory);
+            var maintainances = db.Maintainances.Include(m => m.LivesStock).Include(m => m.MaintainanceProcess).Include(m => m.MaitainanceStock);
             return View(maintainances.ToList());
         }
 
@@ -42,22 +42,25 @@ namespace EsibayeniSolution.Controllers
         {
             ViewBag.LivestockID = new SelectList(db.LivesStocks, "LivestockID", "Code");
             ViewBag.MainPId = new SelectList(db.MaintainanceProcesses, "MainPId", "MainName");
-            ViewBag.PCatID = new SelectList(db.ProductCategories, "PCatID", "ProductType");
+            ViewBag.ProductId = new SelectList(db.MaintainanceStocks, "ProductID", "ProductName");
             return View();
         }
 
         // POST: Maintainances/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MProcID,LivestockID,ProductName,PCatID,MainPId,Time,PreiviousWeight,CurrentWeight")] Maintainance maintainance)
+        public ActionResult Create([Bind(Include = "MProcID,LivestockID,ProductId,ProductCategory,MainPId,CurrentWeight")] Maintainance maintainance)
         {
             if (ModelState.IsValid)
             {
-                maintainance.User = User.Identity.GetUserName();
-                db.Maintainances.Add(maintainance);
                 LivesStock livestock = db.LivesStocks.Find(maintainance.LivestockID);
+                maintainance.User = User.Identity.GetUserName();
+                maintainance.AttendanceDate = maintainance.DateTimeNow();
+                maintainance.PreviousDate = maintainance.DateTimeNow();
+                maintainance.PreviousWeight = livestock.Weight;
+                db.Maintainances.Add(maintainance);
                 livestock.Weight = maintainance.CurrentWeight;
                 db.Entry(livestock).State = EntityState.Modified;
                 db.SaveChanges();
@@ -66,7 +69,7 @@ namespace EsibayeniSolution.Controllers
 
             ViewBag.LivestockID = new SelectList(db.LivesStocks, "LivestockID", "Code", maintainance.LivestockID);
             ViewBag.MainPId = new SelectList(db.MaintainanceProcesses, "MainPId", "MainName", maintainance.MainPId);
-            ViewBag.PCatID = new SelectList(db.ProductCategories, "PCatID", "ProductType", maintainance.PCatID);
+            ViewBag.ProductId = new SelectList(db.MaintainanceStocks, "ProductID", "ProductName", maintainance.ProductId);
             return View(maintainance);
         }
 
@@ -84,16 +87,16 @@ namespace EsibayeniSolution.Controllers
             }
             ViewBag.LivestockID = new SelectList(db.LivesStocks, "LivestockID", "Code", maintainance.LivestockID);
             ViewBag.MainPId = new SelectList(db.MaintainanceProcesses, "MainPId", "MainName", maintainance.MainPId);
-            ViewBag.PCatID = new SelectList(db.ProductCategories, "PCatID", "ProductType", maintainance.PCatID);
+            ViewBag.ProductId = new SelectList(db.MaintainanceStocks, "ProductID", "ProductName", maintainance.ProductId);
             return View(maintainance);
         }
 
         // POST: Maintainances/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MProcID,LivestockID,ProductName,PCatID,MainPId,Date,Time,PreiviousWeight,CurrentWeight")] Maintainance maintainance)
+        public ActionResult Edit([Bind(Include = "MProcID,User,LivestockID,ProductId,ProductCategory,MainPId,AttendanceDate,PreviousDate,PreviousWeight,CurrentWeight")] Maintainance maintainance)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +106,7 @@ namespace EsibayeniSolution.Controllers
             }
             ViewBag.LivestockID = new SelectList(db.LivesStocks, "LivestockID", "Code", maintainance.LivestockID);
             ViewBag.MainPId = new SelectList(db.MaintainanceProcesses, "MainPId", "MainName", maintainance.MainPId);
-            ViewBag.PCatID = new SelectList(db.ProductCategories, "PCatID", "ProductType", maintainance.PCatID);
+            ViewBag.ProductId = new SelectList(db.MaintainanceStocks, "ProductID", "ProductName", maintainance.ProductId);
             return View(maintainance);
         }
 

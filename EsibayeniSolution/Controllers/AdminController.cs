@@ -9,7 +9,7 @@ using EsibayeniSolution.Models;
 
 namespace EsibayeniSolution.Controllers
 {
-   // [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();

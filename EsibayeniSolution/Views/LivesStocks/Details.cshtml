@@ -1,13 +1,13 @@
 ﻿@model EsibayeniSolution.Models.LivesStock
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Livestock Details";
 }
 
-<h2>Details</h2>
+<h2>Livestock Details</h2>
 
 <div>
-    <h4>LivesStock</h4>
+    <h4>Livestock Details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -68,6 +68,9 @@
 
     </dl>
 </div>
+<p>
+    <a href="@Url.Action("ViewLivestockImage","LivestockImages",new { id=Model.LivestockID})">View Images</a>
+</p>
 @if (Request.IsAuthenticated && !User.IsInRole("") && !User.IsInRole("Customer"))
 {
     <p>
@@ -75,7 +78,4 @@
         @Html.ActionLink("Back", "Index")
     </p>
 }
-<p>
-    <a href="@Url.Action("ViewLivestockImage","LivestockImages",new { id=Model.LivestockID})">View Images</a> |    
 
-</p>
