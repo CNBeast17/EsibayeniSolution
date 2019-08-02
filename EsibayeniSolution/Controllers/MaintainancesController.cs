@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EsibayeniSolution.Models;
+using Microsoft.AspNet.Identity;
 
 namespace EsibayeniSolution.Controllers
 {
@@ -50,11 +51,15 @@ namespace EsibayeniSolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MProcID,LivestockID,ProductName,PCatID,MainPId,Date,Time,PreiviousWeight,CurrentWeight")] Maintainance maintainance)
+        public ActionResult Create([Bind(Include = "MProcID,LivestockID,ProductName,PCatID,MainPId,Time,PreiviousWeight,CurrentWeight")] Maintainance maintainance)
         {
             if (ModelState.IsValid)
             {
+                maintainance.User = User.Identity.GetUserName();
                 db.Maintainances.Add(maintainance);
+                LivesStock livestock = db.LivesStocks.Find(maintainance.LivestockID);
+                livestock.Weight = maintainance.CurrentWeight;
+                db.Entry(livestock).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

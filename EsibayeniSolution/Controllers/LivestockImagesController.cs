@@ -42,27 +42,6 @@ namespace EsibayeniSolution.Controllers
             return File(contents, "image/jpg");
         }
 
-        // GET: LivestockImages
-        public ActionResult Index()
-        {
-            return View(db.LivestockImages.ToList());
-        }
-
-        // GET: LivestockImages/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LivestockImage livestockImage = db.LivestockImages.Find(id);
-            if (livestockImage == null)
-            {
-                return HttpNotFound();
-            }
-            return View(livestockImage);
-        }
-
         // GET: LivestockImages/Create
         public ActionResult Create(LivesStock livestock)
         {
@@ -92,43 +71,11 @@ namespace EsibayeniSolution.Controllers
                 }
                 db.LivestockImages.Add(livestockImage);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "LivesStocks");
             }
 
             return View(livestockImage);
         }
-
-        // GET: LivestockImages/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LivestockImage livestockImage = db.LivestockImages.Find(id);
-            if (livestockImage == null)
-            {
-                return HttpNotFound();
-            }
-            return View(livestockImage);
-        }
-
-        // POST: LivestockImages/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ImageId,LivestockID,Image,UploadtDate")] LivestockImage livestockImage)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(livestockImage).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(livestockImage);
-        }
-
         // GET: LivestockImages/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -163,5 +110,6 @@ namespace EsibayeniSolution.Controllers
             }
             base.Dispose(disposing);
         }
+       
     }
 }

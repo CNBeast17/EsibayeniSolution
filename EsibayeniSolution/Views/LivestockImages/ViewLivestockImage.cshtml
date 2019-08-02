@@ -1,14 +1,10 @@
 ﻿@model IEnumerable<EsibayeniSolution.Models.LivestockImagesVM>
 
 @{
-    ViewBag.Title = "ViewLivestockImage";
+    ViewBag.Title = "Livestock Image";
 }
 
-<h2>ViewLivestockImage</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Livestock Image</h2>
 <table class="table">
     <tr>
         <th>
@@ -34,11 +30,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.UploadDate)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ImageId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ImageId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ImageId })
-        </td>
+@if (Request.IsAuthenticated && !User.IsInRole("") && !User.IsInRole("Customer"))
+{
+    <td>
+        @Html.ActionLink("Delete", "Delete", new { id = item.ImageId })
+    </td>
+}
+    
     </tr>
 }
 

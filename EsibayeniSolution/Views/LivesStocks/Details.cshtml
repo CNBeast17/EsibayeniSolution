@@ -68,8 +68,14 @@
 
     </dl>
 </div>
+@if (Request.IsAuthenticated && !User.IsInRole("") && !User.IsInRole("Customer"))
+{
+    <p>
+        @Html.ActionLink("Update Livestock", "Edit", new { id = Model.LivestockID }) |
+        @Html.ActionLink("Back", "Index")
+    </p>
+}
 <p>
-    <a href="@Url.Action("ViewLivestockImage","LivestockImages",new { id=Model.LivestockID})">View Images</a> |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LivestockID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("ViewLivestockImage","LivestockImages",new { id=Model.LivestockID})">View Images</a> |    
+
 </p>

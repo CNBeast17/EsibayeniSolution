@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<EsibayeniSolution.Models.LivesStock>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Livestock";
 }
 
 <h2>Index</h2>
+@if (Request.IsAuthenticated && User.IsInRole("") && User.IsInRole("Customer"))
+{
+    <p>
+        @Html.ActionLink("Add Livestock", "Create")
+    </p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+}
 <table class="table">
     <tr>
         <th>
@@ -59,11 +62,18 @@
             @Html.DisplayFor(modelItem => item.CostPrice)
         </td>
         <td>
-
-            @Html.ActionLink("Edit", "Edit", new { id=item.LivestockID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LivestockID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LivestockID })
+            @Html.ActionLink("Details", "Details", new { id = item.LivestockID }) |
         </td>
+@if (Request.IsAuthenticated && !User.IsInRole("") && !User.IsInRole("Customer"))
+{
+    <td>
+
+        @Html.ActionLink("Update", "Edit", new { id = item.LivestockID }) |
+       
+        @Html.ActionLink("Delete", "Delete", new { id = item.LivestockID })
+    </td>
+}
+       
     </tr>
 }
 

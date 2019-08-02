@@ -11,6 +11,8 @@ namespace EsibayeniSolution.Models
     {
         [Key]
         public int MProcID { get; set; }
+        [DisplayName("Groomer")]
+        public string User { get; set; }
 
         [DisplayName("Livestock Code")]
         public int LivestockID { get; set; }
@@ -31,8 +33,13 @@ namespace EsibayeniSolution.Models
         public decimal PreiviousWeight { get; set; }
         [DisplayName("Current weight")]
         public decimal CurrentWeight { get; set; }
-       
-        
-       
+
+
+
+        public DateTime DateTimeNow()
+        {
+            return DateTime.Now;
+        }
+
     }
 }

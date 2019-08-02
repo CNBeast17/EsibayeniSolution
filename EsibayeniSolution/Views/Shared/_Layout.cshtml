@@ -22,19 +22,20 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Livestock", "Index", "LivesStocks")</li>
+
+                @if (Request.IsAuthenticated && !User.IsInRole("") && !User.IsInRole("Customer"))
+                {
                     <li>@Html.ActionLink("Maintainance", "Index", "Maintainances")</li>
                     <li>@Html.ActionLink("MainProcce", "Index", "MaintainanceProcesses")</li>
                     <li>@Html.ActionLink("Admin", "CreateRole", "Admin")</li>
-
-                @if (User.IsInRole("Groomer"))
-                {
                     <li>@Html.ActionLink("MaintainanceStock", "Index", "MaintainanceStocks")</li>
                     <li>@Html.ActionLink("Supplier", "Index", "Suppliers")</li>
                     <li>@Html.ActionLink("LivestockMaintainanceStock", "Index", "LivestockMaintainanceStocks")</li>
                     <li>@Html.ActionLink("ProductCategory", "Index", "ProductCategories")</li>
                     <li>@Html.ActionLink("Admin", "CreateRole", "Admin")</li>
+
                 }
-                    
+
 
                 </ul>
                 @Html.Partial("_LoginPartial")

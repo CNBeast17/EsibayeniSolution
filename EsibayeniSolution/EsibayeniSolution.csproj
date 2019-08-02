@@ -285,9 +285,6 @@
     <Content Include="Views\LivesStocks\Index.cshtml" />
     <Content Include="Views\LivestockImages\Create.cshtml" />
     <Content Include="Views\LivestockImages\Delete.cshtml" />
-    <Content Include="Views\LivestockImages\Details.cshtml" />
-    <Content Include="Views\LivestockImages\Edit.cshtml" />
-    <Content Include="Views\LivestockImages\Index.cshtml" />
     <Content Include="Views\LivestockImages\ViewLivestockImage.cshtml" />
     <Content Include="Views\MaintainanceProcesses\Create.cshtml" />
     <Content Include="Views\MaintainanceProcesses\Delete.cshtml" />
